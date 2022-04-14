@@ -3,12 +3,12 @@ import Vuex from 'vuex';
 const OAuth = require('@zalando/oauth2-client-js');
 import jsonp from 'jsonp';
 import qs from 'qs';
-import validator from "./utils/validator";
+import validator from './utils/validator';
 
 const vkID = 8136790;
 const vkUrl = 'https://oauth.vk.com/authorize';
-const redirecUri = 'http://localhost:3000/';
-// const redirecUri = 'https://krinteron.github.io/vk_friends_list/';
+// const redirecUri = 'http://localhost:3000/';
+const redirecUri = 'https://krinteron.github.io/vk_friends_list/';
 
 const vkProvider = new OAuth.Provider({
   id: vkID,
@@ -106,7 +106,15 @@ export default new Vuex.Store({
               } else {
                 commit('setStatus', 'connected');
                 const friends = data.response.items.filter((friend) => {
-                  return validator(friend);
+                  if (validator(friend)) {
+                    const { id, first_name, last_name, photo_100 } = friend;
+                    return {
+                      id,
+                      first_name,
+                      last_name,
+                      photo_100,
+                    }
+                  }
                 });
                 commit('addFriends', friends);
               }
