@@ -7,8 +7,8 @@ import validator from './utils/validator';
 
 const vkID = 8136790;
 const vkUrl = 'https://oauth.vk.com/authorize';
-// const redirecUri = 'http://localhost:3000/';
-const redirecUri = 'https://krinteron.github.io/vk_friends_list/';
+const redirecUri = 'http://localhost:3000/';
+// const redirecUri = 'https://krinteron.github.io/vk_friends_list/';
 
 const vkProvider = new OAuth.Provider({
   id: vkID,
