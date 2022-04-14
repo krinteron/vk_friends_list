@@ -105,7 +105,7 @@ export default new Vuex.Store({
                 commit('deleteFriends');
               } else {
                 commit('setStatus', 'connected');
-                const friends = data.response.items.filter((friend) => {
+                const friends = data.response.items.map((friend) => {
                   if (validator(friend)) {
                     const { id, first_name, last_name, photo_100 } = friend;
                     return {
@@ -113,7 +113,7 @@ export default new Vuex.Store({
                       first_name,
                       last_name,
                       photo_100,
-                    }
+                    };
                   }
                 });
                 commit('addFriends', friends);
