@@ -1,4 +1,7 @@
-# happy_tree_friends
+# happy_tree_friends  
+
+## DEMO
+https://krinteron.github.io/vk_friends_list/
 
 ## Project setup
 ```
